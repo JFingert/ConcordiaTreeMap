@@ -4,6 +4,11 @@ body {
     font-size: 16px;
 }
 
+#map { 
+	height: 580px; 
+	width: 800px;
+}
+
 .health {
 	color: rgb(51, 51, 51);
 	font-size: 12px;
