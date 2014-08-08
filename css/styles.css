@@ -6,7 +6,7 @@ body {
 
 #map { 
 	height: 580px; 
-	width: 800px;
+	/*width: 800px;*/
 }
 
 .health {
@@ -49,4 +49,11 @@ body {
 #credits {
 	position: fixed;
 	bottom: 0px;
+}
+
+@media (max-width: 600px) {
+	#map { 
+	height: 300px; 
+}
+
 }
