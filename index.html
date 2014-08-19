@@ -25,17 +25,17 @@
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-					</button>
+					</button> -->
 					<a class="navbar-brand">Concordia Tree Finder</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 
 
@@ -58,28 +58,52 @@
 						</li>
 
 						<li class="clearMap" onclick="onRemove();"><a>Clear Map</a></li>
-					</ul>
+					</ul> -->
 
-				</div><!-- /.navbar-collapse -->
+				<!-- </div>/.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-8" id="map"></div>
-			<div class="col-xs-12 col-sm-4">
-				Tree Health Color Key: <div class="green">Good</div><div class="orange">Fair</div><div class="red">Poor</div> <br><br>
 
-				You can select by species, or specify by health status.<br>
-				Click tree locations for details. <br>
-				Made with <a href="http://www.civicapps.org/datasets/street-trees">CivicApps</a>, Leaflet, and Angular.
-			</div>
+			<div class="panel-group col-xs-12 col-sm-4" id="accordion">
+			<div ng-repeat="(key, value) in treeByHealth" class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#{{treeByHealth[key].condensedName}}">
+							{{key}}
+						</a>
+					</h4>
+				</div>
+				<div id="{{treeByHealth[key].condensedName}}" class="panel-collapse collapse">
+					<div class="panel-body">
+						<span>
+							<a class="health" onclick="onRemove()" ng-click="add(treeByHealth[key], 'all')">All</a>
+							<a class="health" ng-hide="treeByHealth[key].good.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].good, 'good')">Good</a>
+							<a class="health" ng-hide="treeByHealth[key].fair.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].fair, 'fair')">Fair</a>
+							<a class="health" ng-hide="treeByHealth[key].poor.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].poor, 'poor')">Poor</a>
+						</span>
+
+						</div>
+					</div>
+				</div>
+			</div> <!-- panel-group -->
+
+			
 		</div>
 
 		
 
 	</div>
 	
+	<div class="col-xs-12 col-sm-4">
+		Tree Health Color Key: <div class="green">Good</div><div class="orange">Fair</div><div class="red">Poor</div> <br><br>
 
+		You can select by species, or specify by health status.<br>
+		Click tree locations for details. <br>
+		Made with <a href="http://www.civicapps.org/datasets/street-trees">CivicApps</a>, Leaflet, and Angular.
+	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
 	

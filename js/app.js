@@ -17,7 +17,7 @@ app.controller('MainController', function ($scope, $http, $filter) {
   $scope.add = function (data, status) {
     var myLayer = L.geoJson().addTo(map);
     var array = [];
-    
+    console.log("scope.add", data);
     if (status == 'all') {
       if (data.good.length > 0) {
         $scope.good(data.good);
@@ -30,6 +30,7 @@ app.controller('MainController', function ($scope, $http, $filter) {
       }
       
     }
+
     if (status == 'good') {
       $scope.good(data);
     }
@@ -248,16 +249,28 @@ $scope.fair = function (data) {
       .then(function(result){
         
         $scope.treeData = result.data.features;
+
         $scope.treeData.forEach(function (entry) {
+          entry.properties.COMMON = entry.properties.COMMON.toLowerCase();
           $scope.treeProperties.push(entry);
 
           $scope.obj[entry.properties.COMMON] = [];
-          $scope.treeByHealth[entry.properties.COMMON] = {good: [], fair: [], poor: []};
-
+          $scope.treeByHealth[entry.properties.COMMON] = {condensedName: entry.properties.COMMON.replace(/\W+/g, ''), good: [], fair: [], poor: []};
+          // var nameSplit = entry.properties.COMMON.split(' ');
+          // console.log("nameSplit",nameSplit);
+          // if (nameSplit.length > 1) {
+          //   nameSplit.forEach(function (word) {
+          //     $scope.treeByHealth.condensedName += word;
+          //   });
+          // } 
+          // if (nameSplit.length == 1) {
+          //   $scope.treeByHealth.condensedName = entry.properties.COMMON;
+          // }
         });
-        for (key in $scope.obj) {
-          $scope.treeNames.push({key: []});
-        }
+
+        // for (key in $scope.obj) {
+        //   $scope.treeNames.push({key: []});
+        // }
 
 
         

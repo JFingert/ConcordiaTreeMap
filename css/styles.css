@@ -9,6 +9,16 @@ body {
 	/*width: 800px;*/
 }
 
+.panel-group {
+	overflow-y: scroll;
+	height: 580px;
+}
+
+.panel-default>.panel-heading {
+	background-image: none;
+	background-color: white;
+}
+
 .health {
 	color: rgb(51, 51, 51);
 	font-size: 12px;
