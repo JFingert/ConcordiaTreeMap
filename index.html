@@ -1,6 +1,9 @@
 <html lang="en-US" ng-app="App">
 <head>
-	<title></title>
+	<title>Concordia Tree Finder</title>
+
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 	
 	<!-- Leaflet -->
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
@@ -46,10 +49,10 @@
 					<div id="{{treeByHealth[key].condensedName}}" class="panel-collapse collapse">
 						<div class="panel-body">
 							<span>
-								<a class="health" onclick="onRemove()" ng-click="add(treeByHealth[key], 'all')">All</a>
-								<a class="health" ng-hide="treeByHealth[key].good.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].good, 'good')">Good</a>
-								<a class="health" ng-hide="treeByHealth[key].fair.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].fair, 'fair')">Fair</a>
-								<a class="health" ng-hide="treeByHealth[key].poor.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].poor, 'poor')">Poor</a>
+								<a class="health" onclick="onRemove()" ng-click="add(treeByHealth[key], 'all')">All ({{treeByHealth[key].all.length}})</a>
+								<a class="health" ng-hide="treeByHealth[key].good.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].good, 'good')">Good ({{treeByHealth[key].good.length}})</a>
+								<a class="health" ng-hide="treeByHealth[key].fair.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].fair, 'fair')">Fair ({{treeByHealth[key].fair.length}})</a>
+								<a class="health" ng-hide="treeByHealth[key].poor.length === 0" onclick="onRemove()" ng-click="add(treeByHealth[key].poor, 'poor')">Poor ({{treeByHealth[key].poor.length}})</a>
 							</span>
 
 						</div>
@@ -57,26 +60,18 @@
 				</div>
 			</div> <!-- panel-group -->
 
-			
+			<div class="col-xs-12">
+				Tree Health Color Key: <div class="green">Good</div><div class="orange">Fair</div><div class="red">Poor</div> <br><br>
+
+				You can select by species, or specify by health status.<br>
+				Click tree locations for details. <br>
+				Made with <a href="http://www.civicapps.org/datasets/street-trees">CivicApps</a>, Leaflet, and Angular.
+			</div>
 		</div>
-
-		
-
-	</div>
-	
-	<div class="col-xs-12 col-sm-4">
-		Tree Health Color Key: <div class="green">Good</div><div class="orange">Fair</div><div class="red">Poor</div> <br><br>
-
-		You can select by species, or specify by health status.<br>
-		Click tree locations for details. <br>
-		Made with <a href="http://www.civicapps.org/datasets/street-trees">CivicApps</a>, Leaflet, and Angular.
 	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
-	
-	
 	<script src="assets/app.js"></script>
-
 
 	<script>
 	var map = L.map('map').setView([45.5664 , -122.6273], 15);

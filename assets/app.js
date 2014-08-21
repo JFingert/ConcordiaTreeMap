@@ -232,7 +232,7 @@ $scope.fair = function (data) {
 $scope.getData = function () {
 
   dataService.getData().success(function(result, status, headers, config){
-    
+
     $scope.treeData = result.features;
 
     $scope.treeData.forEach(function (entry) {
@@ -240,7 +240,7 @@ $scope.getData = function () {
       $scope.treeProperties.push(entry);
 
       $scope.obj[entry.properties.COMMON] = [];
-      $scope.treeByHealth[entry.properties.COMMON] = {condensedName: entry.properties.COMMON.replace(/\W+/g, ''), good: [], fair: [], poor: []};
+      $scope.treeByHealth[entry.properties.COMMON] = {condensedName: entry.properties.COMMON.replace(/\W+/g, ''),all: [], good: [], fair: [], poor: []};
 
     });
 
@@ -258,6 +258,7 @@ $scope.getData = function () {
       tree.properties.show_on_map = false;
       for(key in $scope.treeByHealth) {
         if (tree.properties.COMMON == key) {
+          $scope.treeByHealth[key].all.push(tree);
           if (tree.properties.HEALTH == 'Good') {
             $scope.treeByHealth[key].good.push(tree);
           }
