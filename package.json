@@ -1,0 +1,16 @@
+{
+  "name": "copy",
+  "version": "0.0.0",
+  "description": "Map of street tress in Portland's Concordia neighborhood",
+  "main": "Gruntfile.js",
+  "author": "Joshua Fingert",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-shell": "~1.0.1",
+    "grunt-open": "~0.2.3",
+    "grunt-contrib-connect": "~0.8.0"
+  }
+}

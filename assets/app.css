@@ -1,0 +1,69 @@
+body {
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#map { 
+	height: 580px; 
+	/*width: 800px;*/
+}
+
+.panel-group {
+	overflow-y: scroll;
+	height: 580px;
+}
+
+.panel-default>.panel-heading {
+	background-image: none;
+	background-color: white;
+}
+
+.health {
+	color: rgb(51, 51, 51);
+	font-size: 12px;
+	padding-left: 20px;
+}
+
+.navbar {
+	margin-bottom: 0px;
+	background: rgb(253, 255, 253);
+}
+
+.dropdown-menu {
+	background: rgb(253, 255, 253);
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 500px;
+    overflow-x: hidden;
+}
+
+.green {
+	background: #3CA855;
+}
+
+.orange {
+	background: #ff7800;
+}
+
+.red {
+	background: #F02D3A;
+}
+
+.green, .orange, .red {
+	display: inline;
+}
+
+#credits {
+	position: fixed;
+	bottom: 0px;
+}
+
+@media (max-width: 600px) {
+	#map { 
+	height: 300px; 
+}
+
+}
